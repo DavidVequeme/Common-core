@@ -6,22 +6,24 @@
 /*   By: dvidal <dvidal@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:23:46 by dvidal            #+#    #+#             */
-/*   Updated: 2025/05/19 13:54:08 by dvidal           ###   ########.fr       */
+/*   Updated: 2025/05/19 16:02:27 by dvidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char buffer[BUFFER_SIZE + 1];
-	char 		*line;
-	int readc;
-	
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*line;
+	int			readc;
+
+	if (fd < 0)
+		return (NULL);
 	line = NULL;
 	if (*buffer != 0)
 		line = ft_strjoin(line, buffer);
-	while (ft_strchr(buffer) == 0)
+	while (f_n(buffer) == 0)
 	{
 		readc = read(fd, buffer, BUFFER_SIZE);
 		if (readc == 0)
@@ -34,6 +36,6 @@ char *get_next_line(int fd)
 		buffer[readc] = '\0';
 		line = ft_strjoin(line, buffer);
 	}
-	ft_save(buffer);    //{fsakfjsakfj \n
-	return(line);
+	ft_save(buffer);
+	return (line);
 }

@@ -6,15 +6,15 @@
 /*   By: dvidal <dvidal@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:24:16 by dvidal            #+#    #+#             */
-/*   Updated: 2025/05/19 13:54:48 by dvidal           ###   ########.fr       */
+/*   Updated: 2025/05/19 16:19:13 by dvidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static size_t ft_strlen(char *s)
+static size_t	mod_strlen(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s)
@@ -26,19 +26,18 @@ static size_t ft_strlen(char *s)
 	return (i);
 }
 
-
-char *ft_strjoin(char *line, char *left2ret)
+char	*mod_strjoin(char *line, char *left2ret)
 {
-	char 			*ret;
+	char	*ret;
 	size_t	i;
 	size_t	j;
-	
+
 	if (!left2ret)
 		return (NULL);
 	i = 0;
 	ret = malloc(ft_strlen(line) + ft_strlen(left2ret) + 1);
 	if (!ret)
-		return (NULL);
+		return (free(line), NULL);
 	while (line && line[i])
 	{
 		ret[i] = line[i];
@@ -52,14 +51,13 @@ char *ft_strjoin(char *line, char *left2ret)
 	if (left2ret[j] == '\n')
 		ret[i++] = '\n';
 	ret[i] = '\0';
-	return(ret);
+	return (ret);
 }
 
-
-int	ft_strchr(char *s)
+int	f_n(char *s)
 {
 	size_t	i;
-	
+
 	i = 0;
 	if (!s)
 		return (-1);
@@ -72,15 +70,14 @@ int	ft_strchr(char *s)
 	return (0);
 }
 
-void ft_save(char *buffer)
+void	ft_save(char *buffer)
 {
 	size_t	lastp;
 	size_t	i;
 
-	
 	i = 0;
-	lastp = ft_strchr(buffer);			//buffer = "    {fsakfjsakfj \n} "
-	if (ft_strchr(buffer) == 0)
+	lastp = f_n(buffer);
+	if (f_n(buffer) == 0)
 	{
 		buffer[0] = '\0';
 		return ;
