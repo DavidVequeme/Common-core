@@ -6,7 +6,7 @@
 /*   By: dvidal <dvidal@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:23:46 by dvidal            #+#    #+#             */
-/*   Updated: 2025/05/16 16:06:19 by dvidal           ###   ########.fr       */
+/*   Updated: 2025/05/19 13:54:08 by dvidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ char *get_next_line(int fd)
 		if (readc < 0)
 		{
 			free(line);
-			buffer[0] = '\0';
 			return (NULL);
 		}
 		buffer[readc] = '\0';
 		line = ft_strjoin(line, buffer);
 	}
-	ft_save(buffer);
+	ft_save(buffer);    //{fsakfjsakfj \n
 	return(line);
 }

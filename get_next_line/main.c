@@ -1,35 +1,90 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dvidal <dvidal@student.42lisboa.com>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 14:33:45 by dvidal            #+#    #+#             */
-/*   Updated: 2025/05/16 17:10:57 by dvidal           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// /* ************************************************************************** */
+// /*                                                                            */
+// /*                                                        :::      ::::::::   */
+// /*   main.c                                             :+:      :+:    :+:   */
+// /*                                                    +:+ +:+         +:+     */
+// /*   By: dvidal <dvidal@student.42lisboa.com>       +#+  +:+       +#+        */
+// /*                                                +#+#+#+#+#+   +#+           */
+// /*   Created: 2025/05/14 14:33:45 by dvidal            #+#    #+#             */
+// /*   Updated: 2025/05/19 13:36:44 by dvidal           ###   ########.fr       */
+// /*                                                                            */
+// /* ************************************************************************** */
+
+
+// #include "get_next_line.h"
+
+// int main(void)
+// {
+// 	int	fd = open("get_next_line.h", O_RDONLY);
+// 	char *line;
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	close(fd);
+
+// }
 
 
 #include "get_next_line.h"
 
-int main(void)
+int		main(int ac, char **av)
 {
-	int	i;
-	int	fd = open("teste.txt", O_RDONLY);
-	char *line;
+	char	*line;
+	int		fd;
 
-	i = 0;
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	// while (i < 2)
-	// {
-	// 	line = get_next_line(fd);
-	// 	printf("%s", line);
-	// 	free(line);
-	// 	i++;
-	// }
-	close(fd);
-	// printf("%c", '\n');
+	line = NULL;
+	if (ac == 2)
+	{
+		fd = open(av[1], O_RDONLY);
+		while ((line = get_next_line(fd)))
+		{
+			printf("line: %s", line);
+			free(line);
+		}
+		close(fd);
+		return (0);
+	}
+	return (-1);
 }

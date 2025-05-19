@@ -6,7 +6,7 @@
 /*   By: dvidal <dvidal@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:24:16 by dvidal            #+#    #+#             */
-/*   Updated: 2025/05/16 16:16:38 by dvidal           ###   ########.fr       */
+/*   Updated: 2025/05/19 13:54:48 by dvidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ static size_t ft_strlen(char *s)
 		i++;
 	return (i);
 }
+
+
 char *ft_strjoin(char *line, char *left2ret)
 {
 	char 			*ret;
-	unsigned long	i;
-	unsigned long	j;
+	size_t	i;
+	size_t	j;
 	
 	if (!left2ret)
-		return (0);
+		return (NULL);
 	i = 0;
-	ret = malloc(ft_strlen(line) + ft_strlen(left2ret)+ 1);
+	ret = malloc(ft_strlen(line) + ft_strlen(left2ret) + 1);
 	if (!ret)
 		return (NULL);
 	while (line && line[i])
@@ -42,15 +44,17 @@ char *ft_strjoin(char *line, char *left2ret)
 		ret[i] = line[i];
 		i++;
 	}
+	if (line)
+		free(line);
 	j = 0;
 	while (left2ret[j] && left2ret[j] != '\n')
 		ret[i++] = left2ret[j++];
 	if (left2ret[j] == '\n')
 		ret[i++] = '\n';
 	ret[i] = '\0';
-	free(line);
 	return(ret);
 }
+
 
 int	ft_strchr(char *s)
 {
@@ -58,14 +62,14 @@ int	ft_strchr(char *s)
 	
 	i = 0;
 	if (!s)
-		return (0);
-	while (s[i] != '\n')
+		return (-1);
+	while (s[i] != '\0')
 	{
-		if (s[i] == '\0')
-			return (0);
+		if (s[i] == '\n')
+			return (i + 1);
 		i++;
 	}
-	return (i);
+	return (0);
 }
 
 void ft_save(char *buffer)
@@ -75,7 +79,7 @@ void ft_save(char *buffer)
 
 	
 	i = 0;
-	lastp = ft_strchr(buffer) + 1;
+	lastp = ft_strchr(buffer);			//buffer = "    {fsakfjsakfj \n} "
 	if (ft_strchr(buffer) == 0)
 	{
 		buffer[0] = '\0';

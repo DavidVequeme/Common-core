@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build get_next_line",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-Werror",
+                "-g",            // Include debugging information
+                "get_next_line.c",
+                "get_next_line_utils.c",
+				"main.c",
+                "-o",
+                "get_next_line.out"  // Output file name (adjust as needed)
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile get_next_line with debugging flags"
+        }
+    ]
+}

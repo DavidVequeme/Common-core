@@ -6,7 +6,7 @@
 /*   By: dvidal <dvidal@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:21:58 by dvidal            #+#    #+#             */
-/*   Updated: 2025/05/16 17:09:23 by dvidal           ###   ########.fr       */
+/*   Updated: 2025/05/19 13:50:35 by dvidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5
+# define BUFFER_SIZE 1
 # endif
 
 # include <stdarg.h>
